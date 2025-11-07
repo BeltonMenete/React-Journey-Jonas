@@ -9,7 +9,7 @@ function App() {
       bio: 'Full-stack web developer and teacher at vopTrain. When not coding or preparing a course, I like to play board games, to cook (and eat) or to just enjoy the Portuguese sun at the beach.',
       skills: ['html + css 💪🏿', 'javascript 💪🏿', 'web design 💪🏿', 'Git and Github 👍🏿', 'React 💪🏿', 'Svelte 😲'],
    });
-   document.title = 'Card - ' + user.name;
+   document.title = ' - ' + user.name;
    return (
       <div className='card'>
          <img src={image} alt='developer-profile-image' />
