@@ -70,11 +70,13 @@ function Menu() {
    return (
       <main className='menu'>
          <h2> Our menu</h2>
-         <div>
+         <ul id='pizza-container'>
             {pizzaData.map((pizza) => (
-               <Pizza pizza={pizza} />
+               <li id='pizza'>
+                  <Pizza pizza={pizza} key={pizza.name} />
+               </li>
             ))}
-         </div>
+         </ul>
       </main>
    );
 }
