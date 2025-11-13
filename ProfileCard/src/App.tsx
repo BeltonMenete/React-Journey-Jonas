@@ -2,13 +2,42 @@ import Skill from './Skill';
 import image from './assets/BeltonMenete-B&W-Profile.jpeg';
 import { useState } from 'react';
 import './App.css';
-
+const Skills = [
+   {
+      skill: 'html + css',
+      level: 'advanced',
+   },
+   {
+      skill: 'javascript',
+      level: 'advanced',
+   },
+   {
+      skill: 'web design',
+      level: 'advanced',
+   },
+   {
+      skill: 'html + css',
+      level: 'advanced',
+   },
+   {
+      skill: 'Git and Github ',
+      level: 'intermediate',
+   },
+   {
+      skill: 'React',
+      level: 'Advanced',
+   },
+   {
+      skill: 'Svelte',
+      level: 'beginner',
+   },
+];
 function App() {
    const [user] = useState({
       name: 'Belton Menete',
       bio: 'Full-stack web developer and teacher at vopTrain. When not coding or preparing a course, I like to play board games, to cook (and eat) or to just enjoy the Portuguese sun at the beach.',
-      skills: ['html + css 💪🏿', 'javascript 💪🏿', 'web design 💪🏿', 'Git and Github 👍🏿', 'React 💪🏿', 'Svelte 😲'],
    });
+   const [skills] = useState(Skills);
    document.title = ' - ' + user.name;
    return (
       <div className='card'>
@@ -17,8 +46,8 @@ function App() {
             <h2 className='name'>{user.name}</h2>
             <p className='about'>{user.bio}</p>
             <div className='skills'>
-               {user.skills.map((skill) => {
-                  return <Skill skillName={skill} key={skill} />;
+               {skills.map((skill) => {
+                  return <Skill skillName={skill.skill} skillLevel={skill.level} key={skill.skill} />;
                })}
             </div>
          </div>
