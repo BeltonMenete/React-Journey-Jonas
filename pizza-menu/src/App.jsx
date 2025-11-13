@@ -70,16 +70,23 @@ function Menu() {
    return (
       <main className='menu'>
          <h2> Our menu</h2>
+
          {pizzaData.length > 0 ? (
-            <ul id='pizza-container'>
-               {pizzaData.map((pizza) => (
-                  <li id='pizza' key={pizza.name}>
-                     <Pizza pizza={pizza} />
-                  </li>
-               ))}
-            </ul>
+            <>
+               <p className='paragraph'>
+                  Authentic Italian cuisine.{pizzaData.length} creative dishes to <br />
+                  choose from. All from our stone oven, all organic, all delicious
+               </p>
+               <ul id='pizza-container'>
+                  {pizzaData.map((pizza) => (
+                     <li id='pizza' key={pizza.name}>
+                        <Pizza pizza={pizza} />
+                     </li>
+                  ))}
+               </ul>
+            </>
          ) : (
-            "We're still working on our Menu. Please come back later :)"
+            <p className='paragraph'>"We're still working on our Menu. Please come back later :)"</p>
          )}
       </main>
    );
@@ -101,17 +108,29 @@ function Order(props) {
       </div>
    );
 }
-function Pizza(props) {
-   const { pizza } = props;
+function Pizza({ pizza }) {
+   if (pizza.soldOut) {
+      return (
+         <div id='pizza' className='sold-out'>
+            <img src={pizza.photoName} alt={pizza.name} />
+            <div>
+               <h2>{pizza.name}</h2>
+               <p>{pizza.ingredients}</p>
+               <span>Sold Out</span>
+            </div>
+         </div>
+      );
+   }
 
-   if (pizza.soldOut) return <Header />;
    return (
-      <div>
-         <img src={pizza.photoName} alt={pizza.photoName} />
-         <h2>{pizza.name} </h2>
-         <p>{pizza.ingredients} </p>
-         <span>{pizza.price + 3}</span>
-      </div>
+      <>
+         <img src={pizza.photoName} alt={pizza.name} />
+         <div>
+            <h2>{pizza.name}</h2>
+            <p>{pizza.ingredients}</p>
+            <span>${pizza.price}</span>
+         </div>
+      </>
    );
 }
 export default App;
