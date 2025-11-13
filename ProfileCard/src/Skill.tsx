@@ -1,13 +1,16 @@
-function Skill({ skillName, skillLevel }: { skillName: string; skillLevel: string }) {
+type props = { skillName: string; level: string };
+
+function Skill({ skillName, level }: props) {
    const randomColor = () => `hsl(${Math.random() * 360}, 100%, 75%)`;
-   const renderEmoji = (level: string): string => {
-      if (level.toLowerCase() == 'intermediate') return ' 👍🏿';
-      if (level.toLowerCase() == 'advanced') return ' 💪🏿';
-      else return '😲';
-   };
+
    return (
       <div className='skill' style={{ backgroundColor: randomColor() }}>
-         {skillName + renderEmoji(skillLevel)}
+         <span> {skillName}</span>
+         <span>
+            {level == 'advanced' && ' 💪🏿'}
+            {level == 'beginner' && ' 😲'}
+            {level == 'intermediate' && ' 👍🏿'}
+         </span>
       </div>
    );
 }

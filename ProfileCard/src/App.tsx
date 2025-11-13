@@ -25,7 +25,7 @@ const Skills = [
    },
    {
       skill: 'React',
-      level: 'Advanced',
+      level: 'advanced',
    },
    {
       skill: 'Svelte',
@@ -47,7 +47,7 @@ function App() {
             <p className='about'>{user.bio}</p>
             <div className='skills'>
                {skills.map((skill) => {
-                  return <Skill skillName={skill.skill} skillLevel={skill.level} key={skill.skill} />;
+                  return <Skill skillName={skill.skill} level={skill.level} key={skill.skill} />;
                })}
             </div>
          </div>
