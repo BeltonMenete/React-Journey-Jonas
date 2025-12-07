@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+   const [questions, setQuestions] = useState([
+      { question: 'What language is React based on?', answer: 'JavaScript', flipped: false },
+      { question: 'What are the building blocks of React apps?', answer: 'Components', flipped: false },
+      {
+         question: "What's the name of the syntax we use to describe a UI in React?",
+         answer: 'JSX (JavaScript XML)',
+         flipped: false,
+      },
+      {
+         question: 'How to pass data from parent to child components?',
+         answer: 'Using props (properties)',
+         flipped: false,
+      },
+      {
+         question: 'How to give components memory?',
+         answer: 'Using state (specifically the useState Hook)',
+         flipped: false,
+      },
+      {
+         question: 'What do we call an input element that is completely synchronised with state?',
+         answer: 'A Controlled Component',
+         flipped: false,
+      },
+   ]);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+   const toggleQuestion = (index) => {
+      const newQuestions = [...questions];
+      newQuestions[index].flipped = !newQuestions[index].flipped;
+      setQuestions(newQuestions);
+   };
+
+   return (
+      <div className='card-container'>
+         {questions.map((q, i) => (
+            <div onClick={() => toggleQuestion(i)} className='card' key={i}>
+               {q.flipped ? q.answer : q.question}
+            </div>
+         ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+   );
 }
 
-export default App
+export default App;
